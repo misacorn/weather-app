@@ -1,7 +1,11 @@
 const chalk = require("chalk");
-const log = console.log;
+const text = require("./notes");
 
+const log = console.log;
 log(chalk.bgRed("Success!"));
+
+const showText = text();
+console.log(showText);
 
 // const fs = require("fs")
 
@@ -9,8 +13,5 @@ log(chalk.bgRed("Success!"));
 // fs.appendFileSync("notes.txt", "And this is the second one.")
 
 // const validator = require("validator");
-// const text = require("./notes");
-
-// const showText = text();
 
 // console.log(validator.isURL("gmail@co"));
