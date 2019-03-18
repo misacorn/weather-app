@@ -3,8 +3,9 @@
 // fs.writeFileSync("notes.txt", "This is the first line. ")
 // fs.appendFileSync("notes.txt", "And this is the second one.")
 
+const validator = require("validator");
 const text = require("./notes");
 
-const showText = text()
+const showText = text();
 
-console.log(showText);
+console.log(validator.isURL("gmail@co"));
