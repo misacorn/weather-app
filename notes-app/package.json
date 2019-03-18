@@ -10,7 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^2.4.2",
+<<<<<<< HEAD
     "nodemon": "^1.18.10",
+=======
+>>>>>>> ca2d9733bcd8e1b77c05dc0d9f3c35d58070d1e7
     "validator": "^10.11.0"
   }
 }
