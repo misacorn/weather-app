@@ -1,29 +1,54 @@
 const chalk = require("chalk");
-<<<<<<< HEAD
+const yargs = require("yargs");
 const text = require("./notes");
 
-const log = console.log;
-log(chalk.bgRed("Success!"));
+// console.log(process.argv);
 
-const showText = text();
-console.log(showText);
-=======
-const log = console.log;
+yargs.version("1.1.1");
 
-log(chalk.bgRed("Success!"));
->>>>>>> ca2d9733bcd8e1b77c05dc0d9f3c35d58070d1e7
+yargs.command({
+  command: "add",
+  describe: "Add a new note!",
+  builder: {
+    title: {
+      describe: "Note title",
+      demandOption: true,
+      type: "string"
+    },
+    body: {
+      describe: "Note body",
+      demandOption: true,
+      type: "string"
+    }
+  },
+  handler: function(argv) {
+    console.log("Title: " + argv.title);
+    console.log("Body: " + argv.body);
+  }
+});
 
-// const fs = require("fs")
+yargs.command({
+  command: "remove",
+  describe: "Remove a note!",
+  handler: function() {
+    console.log("Removing a note");
+  }
+});
 
-// fs.writeFileSync("notes.txt", "This is the first line. ")
-// fs.appendFileSync("notes.txt", "And this is the second one.")
+yargs.command({
+  command: "list",
+  describe: "List all notes!",
+  handler: function() {
+    console.log("Listing all notes!");
+  }
+});
 
-// const validator = require("validator");
-<<<<<<< HEAD
-=======
-// const text = require("./notes");
+yargs.command({
+  command: "read",
+  describe: "Read a note!",
+  handler: function() {
+    console.log("Reading a note");
+  }
+});
 
-// const showText = text();
->>>>>>> ca2d9733bcd8e1b77c05dc0d9f3c35d58070d1e7
-
-// console.log(validator.isURL("gmail@co"));
+yargs.parse();
