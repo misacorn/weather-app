@@ -21,22 +21,23 @@ const addNote = (title, body) => {
 };
 
 const removeNote = title => {
-  const notes = loadNotes()
-  const afterRemoval = notes.filter(note => note.title !== title)
-  if (afterRemoval.length === 0) {
-    console.log("No note was removed!")
+  const notes = loadNotes();
+  const selected = notes.filter(note => note.title === title)
+  const afterRemoval = notes.filter(note => note.title !== title);
+  if (selected.length === 0) {
+    console.log("No note was removed.")
   } else {
-    saveNotes(afterRemoval)
-    console.log("A note was removed")
+    saveNotes(afterRemoval);
+    console.log("A note was removed");
   }
-}
+};
 
 const saveNotes = notes => {
   const dataJSON = JSON.stringify(notes);
   return fs.writeFileSync("notes.json", dataJSON);
 };
 
-const loadNotes = function() {
+const loadNotes = () => {
   try {
     const dataBuffer = fs.readFileSync("notes.json");
     const dataJSON = dataBuffer.toString();
