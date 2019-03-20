@@ -1,6 +1,6 @@
 const chalk = require("chalk");
 const yargs = require("yargs");
-const text = require("./notes");
+const notes = require("./notes");
 
 // console.log(process.argv);
 
@@ -22,8 +22,7 @@ yargs.command({
     }
   },
   handler: function(argv) {
-    console.log("Title: " + argv.title);
-    console.log("Body: " + argv.body);
+    notes.addNote(argv.title, argv.body);
   }
 });
 
