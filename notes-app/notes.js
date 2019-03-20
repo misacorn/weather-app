@@ -22,14 +22,19 @@ const addNote = (title, body) => {
 
 const removeNote = title => {
   const notes = loadNotes();
-  const selected = notes.filter(note => note.title === title)
+  const selected = notes.filter(note => note.title === title);
   const afterRemoval = notes.filter(note => note.title !== title);
   if (selected.length === 0) {
-    console.log("No note was removed.")
+    console.log("No note was removed.");
   } else {
     saveNotes(afterRemoval);
     console.log("A note was removed");
   }
+};
+
+const listNotes = (title, body) => {
+  const notes = loadNotes();
+  notes.forEach(note => console.log(`${note.title}: ${note.body}`));
 };
 
 const saveNotes = notes => {
@@ -50,5 +55,6 @@ const loadNotes = () => {
 module.exports = {
   getNotes,
   addNote,
-  removeNote
+  removeNote,
+  listNotes
 };
