@@ -31,6 +31,14 @@ const add = (a, b, c) => {
   c(sum);
 };
 
+//another solution
+
+const add1 = (a, b, c) => {
+  setTimeout(() => {
+    c(a + b);
+  }, 2000);
+};
+
 add(1, 4, sum => {
   console.log(sum); // Should print: 5
 });
