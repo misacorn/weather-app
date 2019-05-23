@@ -1,10 +1,17 @@
+const path = require("path");
 const express = require("express");
 
-const app = express();
+// console.log(__dirname);
+// console.log(__filename);
 
-app.get("", (req, res) => {
-  res.send("<h1>Helu Umimu</h1>");
-});
+const app = express();
+const pubD = path.join(__dirname, "../public");
+
+app.use(express.static(pubD));
+
+// app.get("", (req, res) => {
+//   res.send("<h1>Helu Umimu</h1>");
+// });
 
 app.get("/about", (req, res) => {
   res.send([
