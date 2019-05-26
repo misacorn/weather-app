@@ -41,9 +41,19 @@ app.get("/help", (req, res) => {
   });
 });
 
-// app.get("/weather", (req, res) => {
-//   res.send({ forcast: "Sunny", location: "Helsinki" });
-// });
+app.get("/help/*", (req, res) => {
+  res.render("404", {
+    title: "Help!",
+    errorMessage: "Help Article Not Found"
+  });
+});
+
+app.get("*", (req, res) => {
+  res.render("404", {
+    title: "Error",
+    errorMessage: "Page Is Not Found"
+  });
+});
 
 app.listen(3000, () => {
   console.log("Server is up on port 3000");
