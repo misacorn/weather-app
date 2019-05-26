@@ -1,5 +1,6 @@
 const path = require("path");
 const express = require("express");
+const hbs = require("hbs");
 
 // console.log(__dirname);
 // console.log(__filename);
@@ -7,47 +8,35 @@ const express = require("express");
 //define paths for Express config
 const app = express();
 const pubD = path.join(__dirname, "../public");
-const viewPath = path.join(__dirname, "../templates");
+const viewPath = path.join(__dirname, "../templates/views");
+const partialPath = path.join(__dirname, "../templates/partials");
 
 //set up handlebars engine and views location
 app.set("view engine", "hbs");
 app.set("views", viewPath);
+hbs.registerPartials(partialPath);
 
+//set up static directory to server
 app.use(express.static(pubD));
 
 app.get("", (req, res) => {
   res.render("index", {
     title: "Weather App",
+    name: "Micu"
+  });
+});
+
+app.get("/about", (req, res) => {
+  res.render("about", {
+    title: "About",
     name: "Mimu"
   });
 });
 
-// app.get("", (req, res) => {
-//   res.send("<h1>Helu Umimu</h1>");
-// });
-
-app.get("/about", (req, res) => {
-  res.render("about", {
-    title: "About"
-  });
-});
-
-// app.get("/about", (req, res) => {
-//   res.send([
-//     {
-//       name: "Umimu",
-//       age: "forever 18"
-//     },
-//     {
-//       name: "Umicu",
-//       age: "forever 81"
-//     }
-//   ]);
-// });
-
 app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help!",
+    name: "Mona",
     message: "Help me get a job!"
   });
 });
