@@ -4,10 +4,15 @@ const express = require("express");
 // console.log(__dirname);
 // console.log(__filename);
 
+//define paths for Express config
 const app = express();
 const pubD = path.join(__dirname, "../public");
+const viewPath = path.join(__dirname, "../templates");
 
+//set up handlebars engine and views location
 app.set("view engine", "hbs");
+app.set("views", viewPath);
+
 app.use(express.static(pubD));
 
 app.get("", (req, res) => {
