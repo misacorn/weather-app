@@ -22,28 +22,29 @@ app.use(express.static(pubD));
 app.get("", (req, res) => {
   res.render("index", {
     title: "Weather App",
-    name: "Micu"
+    name: "Misa"
   });
 });
 
 app.get("/about", (req, res) => {
   res.render("about", {
     title: "About",
-    name: "Mimu"
+    name: "Misa"
   });
 });
 
 app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help!",
-    name: "Mona",
-    message: "Help me get a job!"
+    name: "Misa",
+    message: "How to find your location?"
   });
 });
 
 app.get("/help/*", (req, res) => {
   res.render("404", {
     title: "Help!",
+    name: "Mimu",
     errorMessage: "Help Article Not Found"
   });
 });
@@ -51,6 +52,7 @@ app.get("/help/*", (req, res) => {
 app.get("*", (req, res) => {
   res.render("404", {
     title: "Error",
+    name: "Mimu",
     errorMessage: "Page Is Not Found"
   });
 });

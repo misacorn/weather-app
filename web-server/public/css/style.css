@@ -1,3 +1,42 @@
+body {
+  color: #fc6c85;
+  font-family: Verdana;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 160px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+footer {
+  color: #888888;
+  border-top: 1px solid #eeeeee;
+  padding: 16px 0;
+  margin-top: 16px;
+}
+
+header {
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+
 h1 {
-  color: green;
+  font-size: 64px;
+  margin-bottom: 48px;
+}
+
+header a {
+  color: #888888;
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+.portrait {
+  height: 300px;
+  width: 225px;
 }
