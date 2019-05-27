@@ -33,6 +33,11 @@ app.get("/about", (req, res) => {
   });
 });
 
+app.get("/weather/address", (req, res) => {
+  !req.query.search && res.send({ error: "You must provide a location" });
+  res.send({ address: req.query.search });
+});
+
 app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help!",
