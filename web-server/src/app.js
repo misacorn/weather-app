@@ -2,6 +2,11 @@ const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
 
+const geoCode = require("./utils/geocode");
+const forecast = require("./utils/forecast");
+
+const address = process.argv[2];
+
 // console.log(__dirname);
 // console.log(__filename);
 
@@ -33,9 +38,25 @@ app.get("/about", (req, res) => {
   });
 });
 
-app.get("/weather/address", (req, res) => {
-  !req.query.search && res.send({ error: "You must provide a location" });
-  res.send({ address: req.query.search });
+app.get("/weather", (req, res) => {
+  const errMes = "You must provide a location";
+  !req.query.search
+    ? res.send({ error: errMes })
+    : geoCode(address, (e, { latitude, longitude, location }) => {
+        {
+          e && res.send({ e: errMes });
+        }
+        forecast(latitude, longitude, (e, forecastData) => {
+          {
+            e && res.send({ e: errMes });
+          }
+          res.send({
+            location,
+            forecast: forecastData,
+            address: req.query.search
+          });
+        });
+      });
 });
 
 app.get("/help", (req, res) => {
