@@ -8,7 +8,7 @@ const forecast = (lat, long, callback) => {
     long;
   request({ url, json: true }, (e, { body }) => {
     const b = body.currently;
-    const temp = b.temperature;
+    const temp = (((b.temperature - 32) * 5) / 9).toFixed(2);
     const precipProbability = b.precipProbability;
     const summary = b.summary;
 

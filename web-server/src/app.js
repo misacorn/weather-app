@@ -39,24 +39,21 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-  const errMes = "You must provide a location";
-  !req.query.search
-    ? res.send({ error: errMes })
-    : geoCode(address, (e, { latitude, longitude, location }) => {
-        {
-          e && res.send({ e: errMes });
-        }
-        forecast(latitude, longitude, (e, forecastData) => {
-          {
-            e && res.send({ e: errMes });
-          }
-          res.send({
-            location,
-            forecast: forecastData,
-            address: req.query.search
-          });
-        });
+  geoCode(req.query.search, (e, { latitude, longitude, location }) => {
+    {
+      e && res.send({ e });
+    }
+    forecast(latitude, longitude, (e, forecastData) => {
+      {
+        e && res.send({ e });
+      }
+      res.send({
+        location,
+        forecast: forecastData,
+        address: req.query.search
       });
+    });
+  });
 });
 
 app.get("/help", (req, res) => {
