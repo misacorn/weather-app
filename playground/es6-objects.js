@@ -9,8 +9,9 @@ const product = {
 // console.log(price);
 // console.log(rating);
 
-const transaction = (type, { label, price }) => {
+const transaction = (type, { label = "anonymous", price = 0 } = {}) => {
   console.log(type + " " + label + " at the price of " + price);
 };
 
 transaction("Order", product);
+transaction("Order");

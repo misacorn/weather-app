@@ -39,7 +39,7 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-  geoCode(req.query.search, (e, { latitude, longitude, location }) => {
+  geoCode(req.query.search, (e, { latitude, longitude, location } = {}) => {
     {
       e && res.send({ e });
     }

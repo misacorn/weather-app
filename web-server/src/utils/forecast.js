@@ -15,10 +15,10 @@ const forecast = (lat, long, callback) => {
     e
       ? console.log("Unable to connect", undefined)
       : body.error
-      ? console.log("Unable to find location", undefined)
+      ? console.log("Unable to find the location", undefined)
       : callback(
           undefined,
-          `${summary}. It is currently ${temp} degrees out. There is ${precipProbability}% of rain.`
+          `${summary}. It is currently ${temp} Celsius degrees out. There is ${precipProbability}% of rain.`
         );
   });
 };
