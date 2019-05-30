@@ -5,8 +5,6 @@ const hbs = require("hbs");
 const geoCode = require("./utils/geocode");
 const forecast = require("./utils/forecast");
 
-const address = process.argv[2];
-
 // console.log(__dirname);
 // console.log(__filename);
 
@@ -43,14 +41,14 @@ app.get("/weather", (req, res) => {
     res.send({
       error: "You must provide an address!"
     });
-  geoCode(req.query.search, (error, { latitude, longitude, location } = {}) => {
+  geoCode(req.query.address, (error, { latitude, longitude, location } = {}) => {
     error && res.send({ error });
     forecast(latitude, longitude, (error, forecastData) => {
       error && res.send({ error });
       res.send({
         location,
         forecast: forecastData,
-        address: req.query.search
+        address: req.query.address
       });
     });
   });

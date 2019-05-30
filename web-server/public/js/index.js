@@ -9,9 +9,9 @@ weatherForm.addEventListener("submit", e => {
   message2.textContent = "";
   fetch("http://localhost:3000/weather?address=" + search.value).then(
     response => {
-      response.json().then(data => {
-        data.error
-          ? console.log(data.error)
+      return response.json().then(data => {
+        return data.error
+          ? (message1.textContent = data.error)
           : ((message1.textContent = data.location),
             (message2.textContent = data.forecast));
       });
