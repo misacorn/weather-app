@@ -39,14 +39,14 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-  geoCode(req.query.search, (e, { latitude, longitude, location } = {}) => {
-    {
-      e && res.send({ e });
-    }
-    forecast(latitude, longitude, (e, forecastData) => {
-      {
-        e && res.send({ e });
-      }
+  !req.query.address &&
+    res.send({
+      error: "You must provide an address!"
+    });
+  geoCode(req.query.search, (error, { latitude, longitude, location } = {}) => {
+    error && res.send({ error });
+    forecast(latitude, longitude, (error, forecastData) => {
+      error && res.send({ error });
       res.send({
         location,
         forecast: forecastData,

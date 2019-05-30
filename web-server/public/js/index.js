@@ -1,12 +1,20 @@
 const weatherForm = document.querySelector("form");
+const search = document.querySelector("input");
+const message1 = document.querySelector("#mes1");
+const message2 = document.querySelector("#mes2");
 
 weatherForm.addEventListener("submit", e => {
   e.preventDefault();
-  fetch("http://localhost:3000/weather?search=helsinki").then(response => {
-    response.json().then(data => {
-      data.error && console.log(data.error);
-      console.log(data.location);
-      console.log(data.forecast);
-    });
-  });
+  message1.textContent = "Loading...";
+  message2.textContent = "";
+  fetch("http://localhost:3000/weather?address=" + search.value).then(
+    response => {
+      response.json().then(data => {
+        data.error
+          ? console.log(data.error)
+          : ((message1.textContent = data.location),
+            (message2.textContent = data.forecast));
+      });
+    }
+  );
 });

@@ -20,12 +20,3 @@ const geoCode = (address, callback) => {
 };
 
 module.exports = geoCode;
-
-// const urlMap =
-//   "https://api.mapbox.com/geocoding/v5/mapbox.places/helsinki.json?access_token=pk.eyJ1IjoibWlzYWNvcm4iLCJhIjoiY2p1NnNkcmRxMDBvZjN5cGg5OTh4d3VuNiJ9.0iB94svSNgR9w3mhREn8rA&limit=1";
-
-// request({ url: urlMap, json: true }, (e, res) => {
-//   const latitude = res.body.features[0].center[0];
-//   const longitude = res.body.features[0].center[1];
-//   console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-// });
